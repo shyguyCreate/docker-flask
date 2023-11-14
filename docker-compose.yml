@@ -1,0 +1,7 @@
+services:
+  app:
+    image: ec2-docker-flask
+    build:
+      context: ./app
+    ports:
+      - 80:8080
