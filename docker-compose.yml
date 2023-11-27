@@ -1,15 +1,25 @@
+name: flask
 services:
   app:
-    image: docker-flask
+    image: flask-app
     build:
       context: ./app
     ports:
       - "8080:8080"
+    networks:
+      network:
+        aliases:
+          - flask-app
   proxy:
-    image: docker-nginx
+    image: nginx-flask
     build:
       context: ./nginx
     ports:
       - "80:80"
     depends_on:
       - app
+    networks:
+      - network
+
+networks:
+  network:
