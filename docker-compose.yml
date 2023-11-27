@@ -1,7 +1,13 @@
 services:
   app:
-    image: ec2-docker-flask
+    image: docker-flask
     build:
       context: ./app
     ports:
-      - 80:8080
+      - "8080:8080"
+  proxy:
+    image: docker-nginx
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
